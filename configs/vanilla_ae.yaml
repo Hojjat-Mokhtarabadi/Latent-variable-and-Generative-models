@@ -1,0 +1,14 @@
+model_params:
+  name: "Vanilla AE"
+  latent_dim: 128
+
+exp_params:
+  dataset: "MNIST"
+  data_path: "data"
+  img_size: 28
+  lr: 0.001
+  batch_size: 128
+  num_workers: 8
+
+trainer_params:
+  max_epoch: 30
