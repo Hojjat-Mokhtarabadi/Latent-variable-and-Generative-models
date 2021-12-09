@@ -83,6 +83,8 @@ fabric.properties
 
 .idea/
 __pycache__/
+data/
+.vscode/
 *.py[cod]
 
 # Distribution / packaging
