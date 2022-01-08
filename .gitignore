@@ -86,6 +86,10 @@ __pycache__/
 data/
 .vscode/
 *.py[cod]
+data_mnist/
+ae_checkpoint.pth
+gan_checkpoint.pth
+src.zip
 
 # Distribution / packaging
 bin/

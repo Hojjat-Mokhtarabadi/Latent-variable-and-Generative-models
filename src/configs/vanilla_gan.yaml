@@ -1,0 +1,14 @@
+model_params:
+  name: "Vanilla_GAN"
+  noise_dim: 128
+
+exp_params:
+  dataset: "MNIST"
+  data_path: "../data"
+  batch_size: 256
+  num_workers: 2
+  lr: 0.0001
+
+trainer_params:
+  max_epoch: 1
+  resume: false

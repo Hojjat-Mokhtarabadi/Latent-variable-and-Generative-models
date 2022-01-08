@@ -1,0 +1,16 @@
+model_params:
+  name: "Conv_AE"
+  latent_dim: 32
+  num_filters: 32
+  kernel_size: 5
+
+exp_params:
+  dataset: "MNIST"
+  data_path: "../data_mnist"
+  batch_size: 256
+  num_workers: 2
+  lr: 0.001
+
+trainer_params:
+  max_epoch: 1
+  resume: false

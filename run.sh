@@ -1,0 +1,1 @@
+python main.py --gan --config 'configs/vanilla_gan.yaml'
