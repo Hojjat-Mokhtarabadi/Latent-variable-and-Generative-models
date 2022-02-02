@@ -36,7 +36,7 @@ python3 -m pip install -r requirements.txt
 Note: the family type and configuration file should be specified in `run.sh`
 ```bash
 cd src
-bash run.sh
+bash ../run.sh
 ```
 
 
