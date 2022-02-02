@@ -6,8 +6,8 @@
 The collection of different latent variable and generative models. This repository contains two popular family of generative models: VAEs and GANs
 
 ### Variational Auto-Encoder [(VAE)](https://arxiv.org/abs/1312.6114)
-In simple words, variational autoencoder is a kind of 'Approximate Density Estimation' methods which try to transform the complex high-dimenstional input distibution to a tracktable and known dirstribution. The basic assumption in VAE is that eveything is Gaussain, thus the encoder part maps evey input to a normal dirstribution, then a random sample from normal distribution is passed through decoder net.
-To generate new samples we only need to sample from normal dirstribution and pass it through decoder
+In simple words, variational autoencoder is a kind of 'Approximate Density Estimation' methods which try to transform the complex high-dimenstional input distibution to a tracktable and known dirstribution. The basic assumption in VAE is that eveything is Gaussain, thus the encoder part maps evey input to a normal dirstribution, then a random sample from normal distribution is passed through the decoder net.
+To generate new samples we only need to sample from normal dirstribution and pass it through the decoder.
 
 ### Generative Adversarial Net [(GAN)](https://arxiv.org/abs/1406.2661)
 Unlike the other method intoduced above, in this type of models we actully want to learn the complex high-dimentional distribution of data but the there is no a straight way to do that so instead, let's learn the transformation from a random noise to the distribution of data. The current model consists of two networks: Generator and Discriminator and the objective is formed as a 'Mini-Max' game in which every network tries to fool the other one and improve itself.
