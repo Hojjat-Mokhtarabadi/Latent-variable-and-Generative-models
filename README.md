@@ -10,7 +10,7 @@ In simple words, variational autoencoder is a kind of 'Approximate Density Estim
 To generate new samples we only need to sample from normal dirstribution and pass it through decoder
 
 ### Generative Adversarial Net [(GAN)](https://arxiv.org/abs/1406.2661)
-Unlike the other method intoduced above, in this type of models we actully want to learn the complex high-dimentional distribution of data but the there is no a straight way to do that so instead, let's learn the transformation from a random noise to the distribution of data. The current model consists of two networks: Generator , Discriminator and the objective is formed as a 'Mini-Max' game in which every network tries to fool the other one and improve itself.
+Unlike the other method intoduced above, in this type of models we actully want to learn the complex high-dimentional distribution of data but the there is no a straight way to do that so instead, let's learn the transformation from a random noise to the distribution of data. The current model consists of two networks: Generator and Discriminator and the objective is formed as a 'Mini-Max' game in which every network tries to fool the other one and improve itself.
 
 Some intuitive resources on VAE and GAN:
 - [Generative Models - Stanford](https://www.youtube.com/watch?v=5WoItGTWV54)
