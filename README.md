@@ -33,7 +33,7 @@ python3 -m pip install -r requirements.txt
 ```
 
 ### Train
-Note: the family type and configuration file should be specified in`run.sh`
+Note: the family type and configuration file should be specified in `run.sh`
 ```bash
 bash run.sh
 ```
