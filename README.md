@@ -1,7 +1,7 @@
 # Latent variable and Generative models
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/)
 [![Pytorch 1.9](https://img.shields.io/badge/pytorch-1.9-orange.svg)](https://pytorch.org/)
-[![Open in Visual Studio Code](https://img.shields.io/badge/preview%20in-vscode.dev-blue)](https://open.vscode.dev/Hojjat-Mokhtarabadi/Latent-variable-and-Generative-models)
+[![Preview in vscode.dev](https://img.shields.io/badge/preview%20in-vscode.dev-blue)](https://open.vscode.dev/Hojjat-Mokhtarabadi/Latent-variable-and-Generative-models)
 
 A collection of different latent variable and generative models. This repository contains Vanilla AE, Convolutional AE and two popular family of generative models: VAEs and GANs
 
