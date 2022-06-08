@@ -17,24 +17,32 @@ class AverageMeter:
 
 
 @torch.no_grad()
-def on_validation_end(size, model, loader):
+def eval_latent_model(size, model, loader):
+    model.eval()
     model = model.to('cpu')
     test_sample = next(iter(loader))[0]
-    # generate
-    # gen = model.sample(size).detach().cpu()
     # reconstruct
     rec = model.reconstruct(test_sample[:size]).detach().cpu()
-    nrow = int(size ** 0.5)
-    pd = 2
+    nrow = int(size ** 0.5); pd=2
     real_grid = v.make_grid(test_sample[:size], padding=pd, nrow=nrow)
     rec_grid = v.make_grid(rec, padding=pd, nrow=nrow)
-    # gen_grid = v.make_grid(gen, padding=pd, nrow=nrow)
 
-    plt.subplot(131), plt.imshow(
+    plt.subplot(121), plt.imshow(
         real_grid.permute(1, 2, 0)), plt.title('real')
-    plt.subplot(132), plt.imshow(
+    plt.subplot(122), plt.imshow(
         rec_grid.permute(1, 2, 0)), plt.title("rec")
-    # plt.subplot(133), plt.imshow(
-    #     gen_grid.permute(1, 2, 0)), plt.title("gen")
+
+    plt.show()
+
+@torch.no_grad()
+def eval_generative_model(size, model):
+    model.eval()
+    model = model.to('cpu')
+    # generate
+    gen = model.sample(size).detach().cpu()
+    nrow = int(size ** 0.5)
+    gen_grid = v.make_grid(gen, padding=2, nrow=nrow)
+    plt.subplot(111), plt.imshow(
+        gen_grid.permute(1, 2, 0)), plt.title("gen")
 
     plt.show()

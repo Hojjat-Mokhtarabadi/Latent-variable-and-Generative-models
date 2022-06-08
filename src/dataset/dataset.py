@@ -44,6 +44,26 @@ class CIFAR10DS():
         return self._train_set, self._test_set, data_shape, data_size
 
 
+class CelebADS():
+    def __init__(self, root):
+        self._train_set = datasets.CelebA(
+            root=root, 
+            split='train',
+            download=True,
+            Transform=transforms.ToTensor()
+        )
+        self._test_set = datasets.CelebA(
+            root=root,
+            split='validation',
+            download=True, 
+            transform=transforms.ToTensor()
+        )
+        
+    def __call__(self):
+        data_shape = (3, 32, 32)
+        data_size = 3 * 32 * 32
+        return self._train_set, self._test_set, data_shape, data_size
+
 class CustomDS(Dataset):
     def __init__(self):
         pass

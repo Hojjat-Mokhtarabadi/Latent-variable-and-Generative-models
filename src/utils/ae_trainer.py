@@ -52,4 +52,4 @@ class AETrainer:
                 torch.save(checkpoint, '../ae_checkpoint.pth')
 
             if e == max_epoch-1:
-                on_validation_end(9, self._model, self._test_loader)
+                eval_generative_model(9, self._model)

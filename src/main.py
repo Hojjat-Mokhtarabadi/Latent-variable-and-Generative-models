@@ -23,7 +23,7 @@ def main(configs, args):
         cifar10_ds = CIFAR10DS(exp_args['data_path'])
         train_set, test_set, data_shape, data_size = cifar10_ds()
     else:
-        print("enter your dataset")
+        raise ValueError("Select the correct dataset")
 
     train_loader = DataLoader(train_set, batch_size=exp_args['batch_size'],
                               shuffle=True, num_workers=exp_args['num_workers'])
@@ -36,11 +36,12 @@ def main(configs, args):
     model = MODELS_[model_args['name']](
         data_shape, data_size, **model_args)
     print(model)
-    if args.ae:
-        # ### AE family settings
+    if args.family == 'ae':
+        #* ### AE family settings
         optimizer = optim.Adam(model.parameters(), lr=exp_args['lr'])
         if args.eval:
-            eval(model, test_loader)
+            model.load_state_dict(torch.load('../ae_checkpoint.pth')['model_state'])
+            eval_generative_model(16, model)
             return
 
         trainer = AETrainer(
@@ -51,15 +52,16 @@ def main(configs, args):
             device)
         trainer.fit_ae(fit_args)
 
-    elif args.gan:
-        # ### GAN family settings
+    elif args.family == 'gan':
+        #* ### GAN family settings
         gan_model = model
         gen_optim = optim.Adam(
             gan_model.generator.parameters(), lr=exp_args['lr'])
         disc_optim = optim.Adam(
             gan_model.discriminator.parameters(), lr=exp_args['lr'])
         if args.eval:
-            eval(gan_model.generator, test_loader)
+            gan_model.load_state_dict(torch.load('../gan_checkpoint.pth')['model_state'])
+            eval_generative_model(16, gan_model.generator)
             return
 
         trainer = GANTrainer(
@@ -86,8 +88,7 @@ if __name__ == '__main__':
                        help='path to the config file',
                        default='configs/conv_ae.yaml')
     parse.add_argument("--eval", action='store_true')
-    parse.add_argument("--gan", action='store_true')
-    parse.add_argument("--ae", action='store_true')
+    parse.add_argument("--family", choices=['ae', 'gan'])
     args = parse.parse_args()
     with open(args.configuration_file, 'r') as f:
         try:

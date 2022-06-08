@@ -1,7 +1,7 @@
 import torch
 from tqdm import trange
 from utils import AverageMeter
-from utils.utils import on_validation_end
+from utils.utils import eval_generative_model
 
 
 class GANTrainer:
@@ -22,7 +22,7 @@ class GANTrainer:
             x = x.to(self._device)
             y_real = 1
             y_fake = 0
-            # #### D
+            #* #### D
             y = torch.cat([torch.ones(x.size(0), device=self._device),
                           torch.zeros(x.size(0), device=self._device)])
             disc_pred = self._model.discriminator_phase(x)
@@ -33,7 +33,7 @@ class GANTrainer:
             disc_loss.backward()
             self._d_optim.step()
 
-            # #### G
+            #* #### G
             y = torch.ones(x.size(0), device=self._device)
             gen_pred = self._model.generator_phase(x)
             g_kwargs = {'phase': 'G', 'pred': gen_pred}
@@ -66,4 +66,4 @@ class GANTrainer:
                 torch.save(checkpoint, '../gan_checkpoint.pth')
 
             if e == max_epoch-1:
-                on_validation_end(9, self._model, self._test_loader)
+                eval_generative_model(9, self._model)

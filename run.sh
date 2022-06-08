@@ -1,1 +1,1 @@
-python main.py --gan --config 'configs/vanilla_gan.yaml'
+python main.py --family 'gan' --config 'configs/vanilla_gan.yaml'
