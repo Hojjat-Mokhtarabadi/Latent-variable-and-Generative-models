@@ -34,9 +34,9 @@ python3 -m pip install -r requirements.txt
 
 ### Train
 #### Arguments
--- config: The configuration file must be chosen from src/configs
--- eval: Evaluation of a pretrained model
--- family: The model family is either gan or ae
+-- config: The configuration file must be chosen from src/configs<br/>
+-- eval: Evaluation of a pretrained model<br/>
+-- family: The model family is either gan or ae<br/>
 
 Note: the family type and configuration file should be specified in `run.sh`
 ```bash
